@@ -1,9 +1,9 @@
 import './App.css';
 import { Switch, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
-import AboutDID from "./pages/About";
-import LoginPage from "./pages/Login";
+import Home from "./pages/general/Home";
+import AboutDID from "./pages/general/About";
+import LoginPage from "./pages/general/Login";
 
 import NavBar from "./components/NavBar"
 
