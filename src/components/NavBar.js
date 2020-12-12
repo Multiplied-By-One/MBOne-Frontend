@@ -3,6 +3,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import blueGrey from '@material-ui/core/colors/blueGrey'
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
      const styles = {
@@ -18,7 +19,8 @@ const NavBar = () => {
     <div style={styles.root}>
       <AppBar position="static" style={styles.navBar}> 
         <Toolbar>
-          <span style={styles.root}></span>     
+          <span style={styles.root}></span>
+          <Button color="inherit"><NavLink to="/dashboard">Dashboard</NavLink></Button>     
           <Button color="inherit">Blog</Button>
           <Button color="inherit">FAQ</Button>
           <Button color="inherit">Contact</Button>
