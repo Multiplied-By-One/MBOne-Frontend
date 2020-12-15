@@ -1,0 +1,10 @@
+/* JournalHome.js */
+.Journal {
+    text-align: center;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 80px 200px
+}
+
