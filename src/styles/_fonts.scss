@@ -1,0 +1,12 @@
+/** Fonts to include globally */
+@import '~@fontsource/walter-turncoat/index.css';
+
+@font-face {
+    font-family: 'Funky Olive';
+    src: url('./fonts/FunkyOlive-Mixed.woff2') format('woff2'),
+        url('./fonts/FunkyOlive-Mixed.woff') format('woff'),
+        url('./fonts/FunkyOlive-Mixed.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}

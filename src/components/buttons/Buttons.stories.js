@@ -1,9 +1,12 @@
 import SystemMapButton from './SystemMapButton'
-import { storiesOf, addDecorator } from '@storybook/react';
-import {muiTheme} from 'storybook-addon-material-ui';
+import { storiesOf } from '@storybook/react';
+import { Typography } from '@material-ui/core';
+import {text} from '@storybook/addon-knobs';
 
-storiesOf('MBO', module)
-    .addDecorator(muiTheme())
+storiesOf('Buttons', module)
     .add('System Menu Button', () => (
-        <SystemMapButton>System Map</SystemMapButton>
+        <SystemMapButton>
+           <Typography variant='h6'>{text('Inner Text', 'Some Text!')}</Typography>
+        </SystemMapButton>
     ))
+    
