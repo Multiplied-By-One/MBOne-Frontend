@@ -1,0 +1,117 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  S3BucketStaging:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: 'mbo-app-staging'
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+    DeletionPolicy: Retain
+
+  S3BucketProd:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: 'mbo-app-prod'
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+    DeletionPolicy: Retain
+  
+  BucketPolicyStaging:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      PolicyDocument:
+        Id: BucketPolicyStaging
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join 
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref S3BucketStaging
+                - /*
+      Bucket: !Ref S3BucketStaging
+  
+  BucketPolicyProd:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      PolicyDocument:
+        Id: BucketPolicyStaging
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join 
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref S3BucketProd
+                - /*
+      Bucket: !Ref S3BucketProd
+
+  S3BucketStagingUser:
+    Type: AWS::IAM::User
+    Properties:
+      Policies:
+        - PolicyName: S3BucketDeployUserStaging
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+              Action:
+              - s3:*
+              Resource:
+                - !Sub arn:aws:s3:::${S3BucketStaging}
+                - !Sub arn:aws:s3:::${S3BucketStaging}/*
+  
+  S3BucketProdUser:
+    Type: AWS::IAM::User
+    Properties:
+      Policies:
+        - PolicyName: S3BucketDeployUserProd
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+              Action:
+              - s3:*
+              Resource:
+                - !Sub arn:aws:s3:::${S3BucketProd}
+                - !Sub arn:aws:s3:::${S3BucketProd}/*
+Outputs:
+  StagingWebsiteUrl:
+    Value: !GetAtt 
+      - S3BucketStaging
+      - WebsiteURL
+    Description: URL for staging website hosted on S3 (staging)
+  
+  StagingSecureUrl:
+    Value: !Join 
+      - ''
+      - - 'https://'
+        - !GetAtt 
+          - S3BucketStaging
+          - DomainName
+    Description: S3 Origin for staging
+
+  ProdWebsiteUrl:
+    Value: !GetAtt 
+      - S3BucketProd
+      - WebsiteURL
+    Description: URL for website hosted on S3 (prod)
+  
+  ProdSecureUrl:
+    Value: !Join 
+      - ''
+      - - 'https://'
+        - !GetAtt 
+          - S3BucketProd
+          - DomainName
+    Description: S3 Origin for Prod
