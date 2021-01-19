@@ -1,5 +1,3 @@
-
-
 # Multiplied by one frontend
 The repo contains the fronted webapp component of Multiplied by One. An app to assist those with Dissociative Identity Disorder.
 
@@ -24,4 +22,5 @@ The frontend app is a single page application built with:
  * [React](https://create-react-app.dev/)
  * [Material UI](https://material-ui.com/)
  * [Sass](https://sass-lang.com/)
+
 
