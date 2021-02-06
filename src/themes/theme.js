@@ -24,6 +24,10 @@ const MBODark = createMuiTheme(deepMerge(baseTheme, {
         secondary: {
             main: '#5f1c17',
         },
+        inputBorderColor: {
+            color: '#FFFFFF',
+            disabledColor: '#757575',
+        }
     },
 }));
 
