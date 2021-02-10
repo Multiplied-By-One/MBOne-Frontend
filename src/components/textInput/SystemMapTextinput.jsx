@@ -1,7 +1,5 @@
 import { makeStyles } from '@material-ui/styles';
 import TextField from '@material-ui/core/TextField';
-//import { green } from '@material-ui/core/colors';
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,6 +41,3 @@ export default function SystemMapTextinput() {
         </form >
     );
 }
-
-
-//export default SystemMapTextinput;
