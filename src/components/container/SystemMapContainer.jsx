@@ -10,27 +10,22 @@ const useStyles = makeStyles((theme) => ({
             boxShadow: `5px 5px 3px -1px ${theme.palette.secondary.main}`,
             borderRadius: 12,
             height: 400,
-            //display: 'flex',
-            //flexDirection: 'column',
-            //flexGrow: 1,
             justifyContent: 'center',
             alignItems: 'center',
             color: theme.palette.text.primary,
             overflow: 'auto',
         scrollBehaviour: 'smooth',
         padding: 20,
-        //paddingBottom: 50,
-        
+                
         '&::-webkit-scrollbar': {
             width: 10,
-            //background: theme.palette.primary.main,
-        },
+           },
         '&::-webkit-scrollbar-track': {
             scrollbarColor: 'red',
         },
         '&::-webkit-scrollbar-thumb': {
-            backgroundColor: theme.palette.primary.main,  //'rgba(0,0,0,.1)',
-            outline: '1px solid red' //'1px solid slategrey'
+            backgroundColor: theme.palette.primary.main,  
+            outline: '1px solid red' 
         }
     },
 
