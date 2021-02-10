@@ -31,7 +31,6 @@ export default function SystemMapTextinput() {
     return (
         <form className={classes.root} noValidate autoComplete="off">
             <div>
-                <TextField required id="standard-required" label="Required" defaultValue="Hello World"  color="secondary"/>
                 <TextField required id="standard-disabled" label="Disabled" type="text" defaultValue="Enter"
                     className={classes.root}
                     InputProps={{
