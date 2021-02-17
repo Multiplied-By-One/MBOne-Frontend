@@ -8,7 +8,7 @@ const baseTheme = {
     typography: {
         fontFamily: [
             'Walter Turncoat'
-        ]
+        ],
     }
 }
 
@@ -24,6 +24,11 @@ const MBODark = createMuiTheme(deepMerge(baseTheme, {
         secondary: {
             main: '#5f1c17',
         },
+        contour: '#5F1C17',
+    },
+    shape: {
+        borderWidth: 3,
+        borderRadius: 12,
     },
 }));
 
