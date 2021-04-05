@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import deepMerge from 'deepmerge';
 
 /**
@@ -6,13 +6,23 @@ import deepMerge from 'deepmerge';
  */
 const baseTheme = {
     typography: {
-        fontFamily: [
-            'Walter Turncoat'
-        ]
+        h6: {
+            fontFamily: 'Walter Turncoat',
+        },
+        subtitle1: {
+            fontFamily: 'Francois One',
+        },
+        body1: {
+            fontFamily: 'Economica',
+        },
+        caption: {
+            fontFamily: 'Funky Olive',
+            fontSize: '20%',
+        }
     }
 }
 
-const MBODark = createMuiTheme(deepMerge(baseTheme, {
+let MBODark = createMuiTheme(deepMerge(baseTheme, {
     themeName: 'MBO Dark',
     palette: {
         text:{
@@ -26,5 +36,6 @@ const MBODark = createMuiTheme(deepMerge(baseTheme, {
         },
     },
 }));
+MBODark = responsiveFontSizes(MBODark);
 
 export {MBODark}
