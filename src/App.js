@@ -7,24 +7,31 @@ import LoginPage from "./pages/general/Login";
 
 import NavBar from "./components/NavBar"
 
+import { MBODark } from './themes/theme';
+import { ThemeProvider } from '@material-ui/core/styles';
+
 function App() {
+  let theme = MBODark;
+
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <NavBar />
-          <Home />
-        </Route>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <NavBar />
+            <Home />
+          </Route>
 
-        <Route exact path="/about">
-          <AboutDID />
-        </Route>
+          <Route exact path="/about">
+            <AboutDID />
+          </Route>
 
-        <Route exact path="/login">
-          <LoginPage />
-        </Route>
-      </Switch>
-    </div>
+          <Route exact path="/login">
+            <LoginPage />
+          </Route>
+        </Switch>
+      </div>
+    </ThemeProvider>
   );
 }
 
