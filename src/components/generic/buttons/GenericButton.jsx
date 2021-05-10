@@ -2,7 +2,7 @@ import { Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 
 
-const SystemMapButton = withStyles((theme) => {
+const GenericButton = withStyles((theme) => {
   return {
       root: {
         backgroundColor: theme.palette.primary.main,
@@ -16,4 +16,4 @@ const SystemMapButton = withStyles((theme) => {
     }
 })(Button)
 
-export default SystemMapButton
+export default GenericButton
