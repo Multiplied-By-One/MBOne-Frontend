@@ -30,7 +30,7 @@ export default class GenericEntry extends React.Component {
             </Grid>
             <Grid item xs='6' style={{ paddingLeft: '1rem' }}>
               <Container>
-                <img src={this.props.img} style={{maxHeight: '120px', maxWidth: '120px'}} alt="profile picture"/>
+                <img src={this.props.img} style={{maxHeight: '120px'}} alt="profile picture"/>
               </Container>
             </Grid>
           </Grid>

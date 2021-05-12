@@ -30,6 +30,7 @@ let MBODark = createMuiTheme(deepMerge(baseTheme, {
         },
         primary: {
             main: '#222222',
+            background: '#333333',
         },
         secondary: {
             main: '#5f1c17',
