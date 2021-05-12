@@ -1,44 +1,48 @@
 import React from 'react';
+import Container from "../container/Container";
+import GenericButton from "../buttons/GenericButton";
 import { Typography, Grid } from '@material-ui/core';
 
 export default class GenericEntry extends React.Component {
     journalSpace() {
       // make container half
       return (
-        <div>
+        <Container>
           <Typography variant='h6'>{this.props.text}</Typography>
-        </div>
+        </Container>
       );
     }
     meetingSpaceEntry() {
       return (
-        <div>
+        <Container>
           <Typography variant='caption'>{this.props.text}</Typography>
           <Typography variant='subtitle1'>{this.props.subText}</Typography>
-        </div>
+        </Container>
       );
     }
     eyeSpaceProfileEntry() {
       return (
-        <div>
+        <GenericButton style={{ marginLeft: '1rem', marginTop: '1rem' }} >
           <Grid container>
             <Grid item xs='6'>
               <Typography variant='caption'>{this.props.text}</Typography>
               <Typography variant='subtitle1'>{this.props.subText}<br />{this.props.age}</Typography>
             </Grid>
-            <Grid item xs='6'>
-              {this.props.img}
+            <Grid item xs='6' style={{ paddingLeft: '1rem' }}>
+              <Container>
+                <img src={this.props.img} style={{maxHeight: '120px', maxWidth: '120px'}} alt="profile picture"/>
+              </Container>
             </Grid>
           </Grid>
-        </div>
+        </GenericButton>
       );
     }
     systemMapEntry(){
       return (
-        <div>
+        <Container>
           {this.props.img}
           <Typography variant='h6'>{this.props.text}</Typography>
-        </div>
+        </Container>
       );
     }
     render() {

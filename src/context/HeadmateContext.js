@@ -1,33 +1,31 @@
-import createDataContext from './createDataContext'
-// import jsonServer from '../api/jsonServer'
+import createContext from './createContext'
+import jsonServer from '../api/jsonServer'
 
-const getheadmates = dispatch => {
-    return async () => {
-        const response = "im a response" // await jsonServer.get('/headmates')
-        console.log(response)
-        dispatch({ type: 'get_headmates', payload: response.data })
-    }
+export const getheadmates = async dispatch => {
+    
+    const response = await jsonServer.get('/headmates') // "im a response"  
+    console.log(response)
+    dispatch({ type: 'get_headmates', payload: response.data })
+
 }
 
-const addheadmate = dispatch => {
-    return async (title, content, callback) => {
-        // await jsonServer.post('/headmates', { title, content })
-        
-        const response = "add response" 
-        console.log(response)
+export const addheadmate = async ( headmate, callback, dispatch) => {
+    const response = await jsonServer.post('/headmates', headmate)
+    dispatch({ type: 'add_headmate', payload: headmate });
+    // const response = "add response" 
+    // console.log(response)
 
-        /* 
-            why is making a getheadmates() request in index.js from
-            navigation more fool proof than doing get request and 
-            dispatch from here? because it's not API addheadmate
-            function dependent, always calls get from index.js page 
-        */
+    /* 
+        why is making a getheadmates() request in index.js from
+        navigation more fool proof than doing get request and 
+        dispatch from here? because it's not API addheadmate
+        function dependent, always calls get from index.js page 
+    */
 
-        if (callback) callback()
-    }
+    if (callback) callback()
 }
 
-const deleteheadmate = dispatch => {
+export const deleteheadmate = dispatch => {
     return async (id) => {
         //await jsonServer.delete(`/headmates/${id}`)
 
@@ -38,7 +36,7 @@ const deleteheadmate = dispatch => {
     }
 }
 
-const editheadmate = dispatch => {
+export const editheadmate = dispatch => {
     return async (id, title, content, callback) => {
             // await jsonServer.put(`/headmates/${id}`, { title, content })
         
@@ -51,8 +49,10 @@ const editheadmate = dispatch => {
 
 // convention to calling first param state
 // reducer func what new state should be
-const HeadmateReducer = ( state, action ) => {
+export const HeadmateReducer = ( state, action ) => {
     switch(action.type) {
+        case 'add_headmate':
+            return [...state, action.payload];
         case 'delete_headmate':
             // returns state datatype where all values == true to given condition, hence deleting current id from state
             return state.filter((headmate) => headmate.id !== action.payload)
@@ -67,8 +67,11 @@ const HeadmateReducer = ( state, action ) => {
     }
 }
 
-export const { Context, Provider } = createDataContext(
+const { Context, Provider } = createContext(
     HeadmateReducer, 
-    { addHeadmate, deleteHeadmate, editHeadmate, getHeadmates },
+    { addheadmate, deleteheadmate, editheadmate, getheadmates },
     []
 )
+
+// export const Context;
+// export const Provider;

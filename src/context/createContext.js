@@ -11,7 +11,7 @@ export default (reducer, actions, initialState) => {
 
         const boundActions = {}
 
-        for (let key in actions) {
+        for (let key in Object.keys(actions)) {
             boundActions[key] = actions[key](dispatch)
         }
 
@@ -20,5 +20,5 @@ export default (reducer, actions, initialState) => {
         </Context.Provider>
     }
 
-    return { Context, Provider }
+    return { Context, Provider };
 }

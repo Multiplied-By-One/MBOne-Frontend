@@ -1,5 +1,4 @@
 import React from 'react';
-   
 import GenericEntry from './GenericEntry';
 
 export default {
