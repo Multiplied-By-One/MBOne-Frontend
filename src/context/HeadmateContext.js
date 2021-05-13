@@ -3,13 +3,12 @@ import jsonServer from '../api/jsonServer'
 
 export const getheadmates = async dispatch => {
     
-    const response = await jsonServer.get('/headmates') // "im a response"  
-    console.log(response)
+    const response = await jsonServer.get('/headmates') 
     dispatch({ type: 'get_headmates', payload: response.data })
 
 }
 
-export const addheadmate = async ( headmate, callback, dispatch) => {
+export const addheadmate = async ( headmate, dispatch, callback ) => {
     const response = await jsonServer.post('/headmates', headmate)
     dispatch({ type: 'add_headmate', payload: headmate });
     // const response = "add response" 
@@ -25,24 +24,19 @@ export const addheadmate = async ( headmate, callback, dispatch) => {
     if (callback) callback()
 }
 
-export const deleteheadmate = dispatch => {
-    return async (id) => {
-        //await jsonServer.delete(`/headmates/${id}`)
-
-        const response = "delete response" // await jsonServer.get('/headmates')
-        console.log(response)
+export const deleteheadmate = async dispatch => {
+    return id => {
+        jsonServer.delete(`/headmates/${id}`)
 
         dispatch({ type: 'delete_headmate', payload: id })
     }
 }
 
-export const editheadmate = dispatch => {
-    return async (id, title, content, callback) => {
-            // await jsonServer.put(`/headmates/${id}`, { title, content })
-        
-            const response = "edit or put response" // await jsonServer.get('/headmates')
-            console.log(response)
-        dispatch({ type: 'edit_headmate', payload: { id, title, content }})
+export const editheadmate = async dispatch => {
+    return ( id, name, age, gender, traits, callback ) => {
+        jsonServer.put(`/headmates/${id}`, { name, age, gender, traits })
+    
+        dispatch({ type: 'edit_headmate', payload: { id, name, age, gender, traits }})
         if (callback) callback()
     }
 }
@@ -70,7 +64,6 @@ export const HeadmateReducer = ( state, action ) => {
 const { Context, Provider } = createContext(
     HeadmateReducer, 
     { addheadmate, deleteheadmate, editheadmate, getheadmates },
-    []
 )
 
 // export const Context;

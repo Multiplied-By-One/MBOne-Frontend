@@ -37,13 +37,6 @@ const Provider = ({ children }) => {
 function HeadmateListRender() {
     const {state, dispatch} = useContext(Context)
 
-    console.log("this is the state")
-    
-    const flexContainer = {
-        display: 'flex',
-        flexDirection: 'row',
-        padding: 0,
-      };
       useEffect(() => {
         getheadmates(dispatch)
       }, [])

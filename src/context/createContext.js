@@ -1,5 +1,4 @@
 // this file automates context creation for different resources
-
 import React, { useReducer } from 'react'
 
 export default (reducer, actions, initialState) => {

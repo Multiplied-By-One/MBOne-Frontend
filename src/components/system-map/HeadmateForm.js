@@ -1,34 +1,97 @@
+import TextField from '@material-ui/core/TextField';
 import React, { useContext, useEffect, useState, useReducer } from 'react';
 import { HeadmateReducer,  addheadmate, deleteheadmate, editheadmate, getheadmates } from '../../context/HeadmateContext'
 import Container from '../generic/container/Container'
 import GenericButton from '../generic/buttons/GenericButton'
-import { Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core'
+import TextInput from '../generic/TextInput'
 
-function HeadmateForm() {
-    // const {state, dispatch} = useContext(Context)
+const Context = React.createContext()
 
-    // spacing for now, will not work in the long run, especially smaller screen. fix default container spacing
+// children is unrelated to context, dif feature in react
+const Provider = ({ children }) => {
+    const [state, dispatch] = useReducer(HeadmateReducer, [
+      {
+        "id": 1,
+        "age": "25",
+        "name": "Maggie",
+        "image": "https://i.pinimg.com/236x/35/7c/9e/357c9e6f9b84b147dc0316bc995dea57.jpg",
+        "gender": "non-binary"
+      }]);
+
+    const boundActions = {}
+    const actions = {addheadmate, deleteheadmate, editheadmate, getheadmates};
+
+    for (let key in Object.keys(actions)) {
+        boundActions[key] = actions[key]; //(dispatch)
+    }
+
+    return <Context.Provider value={{state, dispatch}}>
+        {children}
+    </Context.Provider>
+}
+
+function HeadmateFormRender() {
+  const {state, dispatch} = useContext(Context)
+
+    const [ name, setName ] = useState('')
+    const [ age, setAge ] = useState('')
+    const [ gender, setGender ] = useState('')
+
+    // spacing for now, will be awkward in the long run, especially smaller screen. fix default container spacing
       return <div style={{paddingLeft: '25%', paddingRight: '25%'}}>
-        <Container style={{padding: '10%', paddingTop:'5%'}}>
+        <Container style={{padding: '5%', paddingTop:'5%'}}>
+          
           <Typography style={{textAlign: 'center', paddingBottom: '1%'}} variant='h6'>Create Profile</Typography>
-          <Typography variant='subtitle1'>
-              *Required<br />
-              *Name:<br />
-              Age:<br />
-              Gender:<br />
-
-          </Typography>
+          
+          <form>
+            <Typography variant='subtitle1'>
+                *Required<br />
+                <TextInput 
+                  onChange={ (event) => { setName(event.target.value) }} 
+                  label="*Name" 
+                  font="subtitle1"
+                />
+                <TextInput 
+                  onChange={ (event) => { setAge(event.target.value) }} 
+                  label="Age" 
+                  font="subtitle1"
+                />
+                <TextInput 
+                  onChange={ (event) => { setGender(event.target.value) }} 
+                  label="Gender" 
+                  font="subtitle1"
+                />
+            </Typography>
+          </form>
+          
           <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
             <Typography variant='subtitle1'>Upload a profile picture</Typography>
             <GenericButton>Browse</GenericButton>
           </div>
+
           <div style={{display: 'flex', justifyContent: 'flex-end', paddingTop: '35%'}}>
             <GenericButton style={{marginRight: '1%'}}>Cancel</GenericButton>
-            <GenericButton>Add Profile</GenericButton>
+            <GenericButton onClick={
+              () => {
+                addheadmate({
+                  "name": name,
+                  "age": age,
+                  "gender": gender,
+                  "image": 'https://clipartart.com/images/clipart-profile-4.jpg'
+                }, dispatch)
+              }
+            }>Add Profile</GenericButton>
           </div>
+
         </Container>
       </div>
-      
+}
+
+function HeadmateForm(props) {
+  return <Provider>
+    <HeadmateFormRender />
+  </Provider>
 }
 
 export default HeadmateForm;
