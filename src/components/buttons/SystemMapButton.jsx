@@ -9,9 +9,9 @@ const SystemMapButton = withStyles((theme) => {
         borderWidth: 3,
         borderStyle: 'solid',
         borderColor: theme.palette.secondary.main,
-        boxShadow: `5px 5px 3px -1px ${theme.palette.secondary.main}`,
+        boxShadow: `5px 5px 3px -1px ${theme.palette.primary.main}`,
         borderRadius: 12,
-        height: 100
+        padding: '1%'
       }
     }
 })(Button)
