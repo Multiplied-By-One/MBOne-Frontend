@@ -1,0 +1,28 @@
+.timestampBoxTitleDiv {
+    width: inherit;
+    height: inherit;
+    margin-left: 5%;
+}
+.timestampBoxTitle{
+    color: #FFFFFF;
+    font-family:'Walter Turncoat';
+    font-size: 20px;
+    margin: 0%;
+    max-height: 70px;
+    max-width: 200px;
+    word-wrap: break-word;
+    white-space: initial;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.timestampBoxDate{
+    width: 80px;
+    text-align: center;
+}
+.timestampBoxDate h6{
+    font-size: 3px;
+    color: #FFFFFF;
+    text-align: center;
+    font-family:'Walter Turncoat';
+}
