@@ -1,23 +1,25 @@
 // this file automates context creation for different resources
 import React, { useReducer } from 'react'
 
-export default (reducer, actions, initialState) => {
-    const Context = React.createContext()
+export const Context = React.createContext()
 
-    // children is unrelated to context, dif feature in react
+export function ContextCreator( reducer, addFunction, deleteFunction, editFunction, getFunction ) {
+
     const Provider = ({ children }) => {
-        const [state, dispatch] = useReducer(reducer, initialState)
+        const [state, dispatch] = useReducer(reducer);
 
         const boundActions = {}
+        const actions = {addFunction, deleteFunction, editFunction, getFunction};
 
         for (let key in Object.keys(actions)) {
-            boundActions[key] = actions[key](dispatch)
+            boundActions[key] = actions[key]; //(dispatch)
         }
 
-        return <Context.Provider value={{ state, ...boundActions }}>
+        return <Context.Provider value={{state, dispatch}}>
             {children}
         </Context.Provider>
     }
 
-    return { Context, Provider };
+    return Provider
 }
+

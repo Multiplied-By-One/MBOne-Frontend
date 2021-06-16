@@ -1,23 +1,19 @@
 import TextField from '@material-ui/core/TextField';
-import React, { useContext, useEffect, useState, useReducer } from 'react';
+import React, { useContext, useState, useReducer } from 'react';
+import { ContextCreator } from '../../context/createContext'
 import { HeadmateReducer,  addheadmate, deleteheadmate, editheadmate, getheadmates } from '../../context/HeadmateContext'
 import Container from '../generic/container/Container'
 import GenericButton from '../generic/buttons/GenericButton'
 import { Typography } from '@material-ui/core'
 import TextInput from '../generic/TextInput'
 
+// const Provider = ContextCreator(HeadmateReducer, addheadmate, deleteheadmate, editheadmate, getheadmates)
+
 const Context = React.createContext()
 
 // children is unrelated to context, dif feature in react
 const Provider = ({ children }) => {
-    const [state, dispatch] = useReducer(HeadmateReducer, [
-      {
-        "id": 1,
-        "age": "25",
-        "name": "Maggie",
-        "image": "https://i.pinimg.com/236x/35/7c/9e/357c9e6f9b84b147dc0316bc995dea57.jpg",
-        "gender": "non-binary"
-      }]);
+    const [state, dispatch] = useReducer(HeadmateReducer);
 
     const boundActions = {}
     const actions = {addheadmate, deleteheadmate, editheadmate, getheadmates};
