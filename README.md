@@ -17,6 +17,11 @@ npm start
 A server should start on port 3000 (under http://localhost:3000/).
 Once that is done you should be good to start developing 🧪
 
+If you would like to run the mock server, you navigate to json-server directory, and run the command:
+```bash
+json-server --watch db.json
+```
+
 ### Tech 💻:
 The frontend app is a single page application built with:
  * [React](https://create-react-app.dev/)
