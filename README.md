@@ -19,7 +19,7 @@ Once that is done you should be good to start developing 🧪
 
 If you would like to run the mock server, you navigate to json-server directory, and run the command:
 ```bash
-json-server --watch db.json
+npm run json-server
 ```
 
 ### Tech 💻:
