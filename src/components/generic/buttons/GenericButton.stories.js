@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core';
 
 const clicked = () => {
     console.log('clicked');
-  }
+}
 
 storiesOf('Buttons', module)
     .add('System Menu Button', () => (
