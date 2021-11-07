@@ -1,35 +1,12 @@
-import TextField from '@material-ui/core/TextField';
-import React, { useContext, useState, useReducer } from 'react';
-import { ContextCreator } from '../../context/createContext'
-import { HeadmateReducer,  addheadmate, deleteheadmate, editheadmate, getheadmates } from '../../context/HeadmateContext'
+import React, { useState } from 'react';
+
 import Container from '../generic/container/Container'
 import GenericButton from '../generic/buttons/GenericButton'
 import { Typography } from '@material-ui/core'
 import TextInput from '../generic/TextInput'
+import { createHeadMate } from '../../api/headMate';
 
-// const Provider = ContextCreator(HeadmateReducer, addheadmate, deleteheadmate, editheadmate, getheadmates)
-
-const Context = React.createContext()
-
-// children is unrelated to context, dif feature in react
-const Provider = ({ children }) => {
-    const [state, dispatch] = useReducer(HeadmateReducer);
-
-    const boundActions = {}
-    const actions = {addheadmate, deleteheadmate, editheadmate, getheadmates};
-
-    for (let key in Object.keys(actions)) {
-        boundActions[key] = actions[key]; //(dispatch)
-    }
-
-    return <Context.Provider value={{state, dispatch}}>
-        {children}
-    </Context.Provider>
-}
-
-function HeadmateFormRender() {
-  const {state, dispatch} = useContext(Context)
-
+function HeadMateForm() {
     const [ name, setName ] = useState('')
     const [ age, setAge ] = useState('')
     const [ gender, setGender ] = useState('')
@@ -69,25 +46,18 @@ function HeadmateFormRender() {
           <div style={{display: 'flex', justifyContent: 'flex-end', paddingTop: '35%'}}>
             <GenericButton style={{marginRight: '1%'}}>Cancel</GenericButton>
             <GenericButton onClick={
-              () => {
-                addheadmate({
+              async () => {
+                await createHeadMate({
                   "name": name,
                   "age": age,
                   "gender": gender,
                   "image": 'https://clipartart.com/images/clipart-profile-4.jpg'
-                }, dispatch)
+                })
               }
             }>Add Profile</GenericButton>
           </div>
-
         </Container>
       </div>
 }
 
-function HeadmateForm(props) {
-  return <Provider>
-    <HeadmateFormRender />
-  </Provider>
-}
-
-export default HeadmateForm;
+export default HeadMateForm;

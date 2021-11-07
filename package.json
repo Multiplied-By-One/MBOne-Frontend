@@ -24,6 +24,7 @@
     "redux-thunk": "^2.3.0",
     "resolve-url-loader": "^3.1.2",
     "sass": "^1.32.8",
+    "swr": "^1.0.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
