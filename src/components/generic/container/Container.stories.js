@@ -1,4 +1,4 @@
-import SystemMapContainer from "./SystemMapContainer";
+import Container from "./Container";
 import { storiesOf } from "@storybook/react";
 import { Typography } from "@material-ui/core";
 import { text } from "@storybook/addon-knobs";
@@ -6,7 +6,7 @@ import { text } from "@storybook/addon-knobs";
 storiesOf('Custom Container', module)
     .add('System Menu Container', () =>(
         <div>
-            <SystemMapContainer >
+            <Container>
 
                 <Typography paragraph >
 
@@ -28,7 +28,7 @@ storiesOf('Custom Container', module)
                 <button>Okay</button>
 
                 <Typography variant='h6'>{text('Innert Text', 'Some Text!')} </Typography>
-            </SystemMapContainer>
+            </Container>
            
         </div>
        ) );

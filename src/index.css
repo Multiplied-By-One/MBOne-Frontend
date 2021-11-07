@@ -7,6 +7,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.borderStyle {
+  background-color: '#222222';
+  border-style: solid #5f1c17;
+  box-shadow: 5px 5px 3px -1px '#222222';
+  border-radius: 12;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
