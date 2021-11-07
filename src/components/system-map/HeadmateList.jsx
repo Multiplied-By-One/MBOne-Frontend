@@ -1,16 +1,14 @@
 import React from 'react';
 
-import EyeSpaceProfileEntry from '../entry/EyeSpaceProfileEntry/EyeSpaceProfileEntry'
+import SystemMapEntry from '../entry/SystemMapEntry/SystemMapEntry'
 import useSWR from 'swr';
 import { Box } from '@material-ui/core';
 import { getHeadMateFetcher } from '../../api/headMate';
 
-const Context = React.createContext()
-
 function HeadmateList() {
   const [endpoint, fetcher] = getHeadMateFetcher()
   const { data, error, isValidating } = useSWR(endpoint, fetcher)
-  console.log(data)
+
   //In the event we have an error
   if (error !== undefined) {
     return (<Box>
@@ -36,7 +34,7 @@ function HeadmateList() {
 
   return <div> {data.map((mate) => {
     return (
-      <EyeSpaceProfileEntry
+      <SystemMapEntry
         age={mate.age}
         img={mate.image}
         subText={mate.gender}
