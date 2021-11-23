@@ -1,0 +1,29 @@
+
+/* common style */
+.eye-root{
+    background-color: #333333;
+    display: block;
+}
+
+.main-container{
+    margin: 0% 1%;
+    margin-bottom: 1%;
+    border:3px #5f1c17; 
+    border-style: none solid solid solid; 
+    border-radius: 0px 0px 12px 12px;
+    /* height:100vh; */
+}
+
+
+/* common style for forms */
+.form-list{
+    display: flex ;
+    margin: 2% 7%;
+    font-size: 1.3rem;
+}
+
+/* Router Link style*/
+.link {
+    text-decoration: none;
+    color:inherit;
+  }
