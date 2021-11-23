@@ -61,7 +61,7 @@ export const SelectInput = (props) => {
     const menuProps = { classes: { list: classes.list},}
     
     return (
-    <Typography variant='subtitle1'>
+    <Typography variant='subtitle1' >
         <Container>
             <FormControl fullWidth style={{overflow:"hidden"}}>
                 <Select
@@ -70,6 +70,7 @@ export const SelectInput = (props) => {
                 classes={{icon: classes.icon, select: classes.selectSelect, iconOpen:classes.iconOpen}}
                 MenuProps={menuProps}
                 IconComponent={ArrowForwardIosIcon}
+                onChange={props.onChange}
                 >
                 <MenuItem value={props.placeholder}>
                     <span>{props.placeholder}</span>
