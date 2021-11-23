@@ -28,5 +28,56 @@
       "image": "https://media.istockphoto.com/vectors/boy-pointing-up-vector-id544811428?k=6&m=544811428&s=612x612&w=0&h=elOOMwPniPXpuq0eG3KjbNBjH40gTpSOYtBz_lPa_a0=",
       "gender": "male"
     }
+  ],
+  "eyeAccountList": [
+    {
+      "id": 1,
+      "name": "Maggie",
+      "spaceTitle": "Maggie's space",
+      "changeTheme": false,
+      "headingFont": "Walter Turncoat",
+      "headingFontSize": "15",
+      "mainFont": "Economica",
+      "mainFontSize": "13",
+      "changePassword": false,
+      "connectImg": false
+    },
+    {
+      "name": "Anna",
+      "spaceTitle": "This Mind Of Mine",
+      "changeTheme": false,
+      "headingFont": "Walter Turncoat",
+      "headingFontSize": "15",
+      "mainFont": "Economica",
+      "mainFontSize": "13",
+      "changePassword": false,
+      "connectImg": false,
+      "id": 2
+    },
+    {
+      "name": "Banana",
+      "spaceTitle": "The Best Smile",
+      "changeTheme": false,
+      "headingFont": "Walter Turncoat",
+      "headingFontSize": "15",
+      "mainFont": "Economica",
+      "mainFontSize": "13",
+      "changePassword": true,
+      "password": "abcdefg",
+      "connectImg": false,
+      "id": 3
+    },
+    {
+      "name": "Abdullah",
+      "spaceTitle": "space title",
+      "changeTheme": false,
+      "headingFont": "Walter Turncoat",
+      "headingFontSize": "15",
+      "mainFont": "Economica",
+      "mainFontSize": "13",
+      "changePassword": false,
+      "connectImg": false,
+      "id": 4
+    }
   ]
 }
