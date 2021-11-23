@@ -7,4 +7,4 @@ export default {
   component: Router,
 };
 
-export const router = () =>  <BrowserRouter> <Router text="WELCOME TO THE EYE"/> </BrowserRouter>
+export const router = () =>  <BrowserRouter> <Router /> </BrowserRouter>
