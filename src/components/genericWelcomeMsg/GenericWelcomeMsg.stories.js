@@ -1,9 +1,11 @@
 import React from 'react'
+import StoryRouter from 'storybook-react-router';
 import GenericWelcomeMassage from './GenericWelcomeMsg'
 
 export default{
     title: 'GenericWelcomeMassage',
     component: GenericWelcomeMassage,
+    decorators: [StoryRouter()],
 }
 
 const Template = (args) => <GenericWelcomeMassage {...args}/> ;

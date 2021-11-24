@@ -1,16 +1,16 @@
 .account-list{
     display: grid;
     padding:2rem 0rem;
-    grid-template-columns: repeat(auto-fill, 26rem);
+    grid-template-columns: repeat(auto-fill, 23rem);
     place-items: center center;
     justify-content:space-evenly;
     grid-row-gap: 3rem;
-    grid-column-gap: 2%;
+    grid-column-gap: 15px;
 }
 
 .account-item{
     text-align: center;
-    width: 26rem;
+    width: 23rem;
 }
 
 

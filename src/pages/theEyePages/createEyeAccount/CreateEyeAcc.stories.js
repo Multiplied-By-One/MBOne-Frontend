@@ -1,11 +1,13 @@
 import React from 'react';
+import StoryRouter from 'storybook-react-router';
 import CreateEyeAcc from './CreateEyeAcc';
-import { BrowserRouter } from 'react-router-dom';
+
 
 export default {
   title: 'The Eye Pages/CreateEyeAcc',
   component: CreateEyeAcc,
+  decorators: [StoryRouter()],
 };
 
-export const createForm = () => <BrowserRouter> <CreateEyeAcc /> </BrowserRouter> 
+export const createForm = () => <CreateEyeAcc />
 

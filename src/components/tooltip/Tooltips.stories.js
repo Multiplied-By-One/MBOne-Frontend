@@ -9,11 +9,9 @@ export default {
 
 const Template = (args) => <Tooltips {...args}/>;
 
-export const tooltips = Template.bind({})
+export const addAccount = Template.bind({})
 
-tooltips.args = {
+addAccount.args = {
     title: "Add an Eye account ",
     icon: <AddIcon/>
-
-
 }

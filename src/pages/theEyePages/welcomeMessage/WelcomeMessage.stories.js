@@ -1,10 +1,12 @@
 import React from 'react';
+import StoryRouter from 'storybook-react-router';
 import WelcomeMassage from './WelcomeMessage';
-import { BrowserRouter } from 'react-router-dom';
+
 
 export default {
   title: 'The Eye Pages/WelcomeMessage',
   component: WelcomeMassage,
+  decorators: [StoryRouter()],
 };
 
-export const welcomeMessage = () =>  <BrowserRouter> <WelcomeMassage /> </BrowserRouter>
+export const welcomeMessage = () => <WelcomeMassage /> 
