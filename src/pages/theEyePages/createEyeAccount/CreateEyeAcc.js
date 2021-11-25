@@ -129,7 +129,9 @@ export default function CreateEyeAcc (){
                                 <Grid item xs='7'> Connect to profile image on the System Map: </Grid>
                                 <Grid item xs='2'> <Checkboxes onChange={(event) => { setConnectImg(event.target.checked) }}/> </Grid>
                                 <Grid item xs='2' style={{textAlign:'right'}}>
-                                    <Button> <Typography variant='h6'>Cancel</Typography> </Button>
+                                    <Link to="/theEye/accounts" className="link">
+                                        <Button> <Typography variant='h6'>Cancel</Typography> </Button>
+                                    </Link>
                                 </Grid>
                                 <Grid item xs='1' style={{textAlign:'right'}}>
                                     <Link to="/theEye/accounts" className="link">
