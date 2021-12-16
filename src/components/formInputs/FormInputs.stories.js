@@ -13,14 +13,21 @@ export default {
     component: TextInput, SelectInput, Checkboxes
   };
 
-const Template1 = (args) => <SelectInput{...args}/>;
+const Template1 = (args) => <SelectInput {...args}/>;
 
-export const selectInput = Template1.bind({});
+export const selectInputWithPlaceholder = Template1.bind({});
+export const selectInputWithDefaultValue = Template1.bind({});
 
-selectInput.args = {
+selectInputWithPlaceholder.args = {
     placeholder: 'Placeholder',
     options: ['Option 1', 'Option 2']
 }
+
+selectInputWithDefaultValue.args = {
+    defaultValue: 'Default Value',
+    options: ['Option 1', 'Default Value', 'Option 2']
+}
+
 const Template2 = (args) => <TextInput {...args}/>;
 export const textInput = Template2.bind({});
 

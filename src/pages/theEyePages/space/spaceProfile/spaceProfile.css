@@ -1,0 +1,40 @@
+/* style for spaceProfile*/
+.journal-list{
+    text-align: center;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 24rem);
+    justify-content: space-evenly;
+    align-content: flex-start;
+    grid-row-gap: 2rem;
+}
+   
+.journal-item{
+    text-align: center;
+    width: 24rem;
+}
+
+.journal-list .journal-item *{
+    padding:5% 3%;
+    font-size: 1.7rem;
+} 
+
+.profile{
+    padding: 2rem 0rem;
+    display: flex;
+}
+
+.picture{
+    width: fit-content;
+    /* cursor: pointer; */
+    margin: 0% 1% 0% 3%;
+}
+
+@media screen and (max-width: 800px) {
+    .profile{
+        display: block;
+    }
+    .picture{
+        margin: 0rem auto 2rem auto;
+    }
+  }

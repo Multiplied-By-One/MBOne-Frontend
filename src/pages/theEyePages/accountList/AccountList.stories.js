@@ -1,6 +1,8 @@
 import React from "react";
 import StoryRouter from 'storybook-react-router';
 import AccountList from './AccountList';
+import { MyProvider } from "../reducer/eyeReducer";
+
 
 
 export default {
@@ -9,8 +11,6 @@ export default {
     decorators: [StoryRouter()],
   };
 
-const Template = (args) => <AccountList {...args}/> ;
+const Template = (args) => <MyProvider> <AccountList {...args}/> </MyProvider> ;
 
 export const accountList = Template.bind({});
-
-accountList.args = {}

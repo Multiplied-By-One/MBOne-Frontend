@@ -11,6 +11,7 @@
 .account-item{
     text-align: center;
     width: 23rem;
+    cursor: pointer;
 }
 
 

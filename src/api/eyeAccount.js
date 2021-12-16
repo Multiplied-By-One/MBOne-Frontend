@@ -15,15 +15,15 @@ export const getEyeAccountFetcher = () => {
 /**
  * Creates 
  */
-export const createEyeAccount = async ({name, spaceTitle, changeTheme, headingFont, headingFontSize, mainFont, mainFontSize, changePassword, password, connectImg, entry}) => {
-  return createEntity(EYE_ACCOUNT_ENDPOINT, {name, spaceTitle, changeTheme, headingFont, headingFontSize, mainFont, mainFontSize, changePassword, password, connectImg, entry})
+export const createEyeAccount = async ({headmateId, name, spaceTitle, changeTheme, headingFont, headingFontSize, mainFont, mainFontSize, createPassword, password, connectImg, entry}) => {
+  return createEntity(EYE_ACCOUNT_ENDPOINT, {headmateId, name, spaceTitle, changeTheme, headingFont, headingFontSize, mainFont, mainFontSize, createPassword, password, connectImg, entry})
 }
 
 /**
  * Updates 
  */
-export const updateEyeAccount = async ({id, name, spaceTitle, changeTheme, headingFont, headingFontSize, mainFont, mainFontSize, changePassword, password, connectImg, entry}) => {
-  return updateEntity(EYE_ACCOUNT_ENDPOINT, {id, name, spaceTitle, changeTheme, headingFont, headingFontSize, mainFont, mainFontSize, changePassword, password, connectImg, entry})
+export const updateEyeAccount = async ({id, headmateId, name, spaceTitle, changeTheme, headingFont, headingFontSize, mainFont, mainFontSize, createPassword, password, connectImg, entry}) => {
+  return updateEntity(EYE_ACCOUNT_ENDPOINT, {id, headmateId, name, spaceTitle, changeTheme, headingFont, headingFontSize, mainFont, mainFontSize, createPassword, password, connectImg, entry})
 }
 
 /**

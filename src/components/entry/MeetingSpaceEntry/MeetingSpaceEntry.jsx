@@ -4,7 +4,7 @@ import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types'; 
 
 function MeetingSpaceEntry(props){
-    return (<Container>
+    return (<Container {...props}>
         <Typography variant='caption'>{props.text}</Typography>
         <Typography variant='subtitle1'>{props.subText}</Typography>
     </Container>)

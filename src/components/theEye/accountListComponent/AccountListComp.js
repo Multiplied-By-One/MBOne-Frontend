@@ -1,16 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-import MeetingSpaceEntry from '../../entry/MeetingSpaceEntry/MeetingSpaceEntry'
-import useSWR from 'swr';
+import React, { useContext, useEffect } from "react";
 import { Box } from '@material-ui/core';
+import useSWR from 'swr';
 import { getEyeAccountFetcher } from '../../../api/eyeAccount';
+import { myContext } from "../../../pages/theEyePages/reducer/eyeReducer";
+import MeetingSpaceEntry from '../../entry/MeetingSpaceEntry/MeetingSpaceEntry'
 
 const EyeAccountList = (props) => {
 
   const [endpoint, fetcher] = getEyeAccountFetcher()
   const { data, error, isValidating } = useSWR(endpoint, fetcher)
 
+  const { dispatch } = useContext(myContext);
+
+  useEffect(() => { dispatch({ type: "getAccounts", accounts: data })
+  }, [data]);
+  
   //In the event we have an error
   if (error !== undefined) {
     return (<Box>
@@ -18,31 +22,40 @@ const EyeAccountList = (props) => {
     </Box>)
   }
 
-  // In the event we fetched but no headmates were found
+  // In the event we fetched but no eye account were found
   if (data === []) {
     return (<Box>
       No eye account found
     </Box>)
   }
 
-  // In the event we are initially loading the users headmates
+  // In the event we are initially loading 
   if (!data && isValidating) {
     return (<Box>
       Loading...
     </Box>)
   }
 
+
+  function goLogin() {
+    return new Promise(function(resolve){
+        resolve(props.history.push("/theEye/login"))
+    })
+}
+  
+
   return <div className="account-list" > {data.map((account) => {
-    return (  
-      <Link to="/theEye/login" className="link account-item" key={account.id}>
+    return (
+      <div className="account-item" key={account.id}>
         <MeetingSpaceEntry
-        subText={account.spaceTitle}
-        text={account.name}
-        onClick={() => {
-          console.log(account.name, account.spaceTitle)
-        }}
-        /> 
-      </Link> 
+          subText={account.spaceTitle}
+          text={account.name}
+          onClick={async () => {
+            await dispatch({ type: "clickAccount", data: account });
+            await goLogin();
+          }}
+        />
+      </div>
     )
   })}
   </div>;

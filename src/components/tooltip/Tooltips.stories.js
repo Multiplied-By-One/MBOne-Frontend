@@ -13,5 +13,6 @@ export const addAccount = Template.bind({})
 
 addAccount.args = {
     title: "Add an Eye account ",
-    icon: <AddIcon/>
+    icon: <AddIcon />,
+    onClick: console.log("Clicked")
 }
