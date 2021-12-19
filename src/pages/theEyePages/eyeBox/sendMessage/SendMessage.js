@@ -52,19 +52,8 @@ export default function SendMessage() {
             "messageBody": messageBody,
             "readStatu": false   //indicates whether the receiver has read this message. false: not read yet, true: already read           
         })
-        await showSent().then((time) => {
-            setSent((prev) => !prev);
-            setTimeout(() => {
-                setSent(false)
-            }, time)
-        })
-
-    }
-
-    function showSent() {
-        return new Promise(function (resolve) {
-            resolve(2000)
-        })
+        setSent(true);
+        setTimeout(() => { setSent(false) }, 2000)
     }
 
     //store all account information of other eye accounts

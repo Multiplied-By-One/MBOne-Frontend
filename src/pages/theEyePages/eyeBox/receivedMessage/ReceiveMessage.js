@@ -13,6 +13,8 @@ import EyeBoxContactList from '../../../../components/eyeBoxContactList/EyeBoxCo
 
 import { updateEyeBox } from '../../../../api/eyebox';
 import { myContext } from '../../reducer/eyeReducer';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const useStyles = makeStyles(() => ({
     //style for <Badge/>
@@ -28,6 +30,7 @@ export default function SendMessage() {
 
     const classes = useStyles();
     const { state, dispatch } = useContext(myContext);
+    const [data, setData] = useState([])
 
     const monthsInEng = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -39,11 +42,17 @@ export default function SendMessage() {
         state.eyebox[i].senderName = names[i];
     }
 
-    //need to modify to handle to reply event when user click on reply button
+    //still need to modify to handle the reply event when user click on reply button
     const handleReply = (event) => {
         console.log("action need to be add when click on reply button")
     }
 
+    useEffect(() => {
+        setData(state.eyebox)
+    }, [state.eyebox])
+
+
+    console.log("state: ", state)
     return (
         <div className="eye-root" >
             <Typography variant='h6' style={{ textAlign: 'center', fontSize: '1.5rem' }}>
@@ -63,7 +72,7 @@ export default function SendMessage() {
             <div className="main-container" style={{ display: "flex", padding: "16px", textAlign: "center" }}>
                 <EyeBoxContactList
                     subheader={<div style={{ display: 'flex', padding: "0% 2%", }}> <IconMenu options={['Sent']} /><span style={{ margin: 'auto' }}>Received</span></div>}
-                    listItems={state.eyebox.map((item) => (
+                    listItems={data.map((item) => (
                         <Badge color="primary" variant="dot" invisible={item.readStatu ? true : false} key={item.id} style={{ width: "100%" }} classes={{ colorPrimary: classes.color, dot: classes.dot }}>
                             <ListItem button style={{ display: 'block', textAlign: 'center', borderBottom: "1px solid white" }}
                                 onClick={() => {
@@ -83,7 +92,6 @@ export default function SendMessage() {
                             >
                                 <Typography variant="h6"> FROM: {item.senderName} </Typography>
                                 <Typography variant="subtitle1"> {item.subjectLine} </Typography>
-                                {/* <Typography variant="body1"> {item.time} </Typography> */}
                                 <Typography variant="body1">
                                     {`${monthsInEng[new Date(item.time).getMonth()]} ${new Date(item.time).getDate() < 10 ? `0${new Date(item.time).getDate()}` : new Date(item.time).getDate()} ${new Date(item.time).getFullYear()} ${new Date(item.time).getHours() < 10 ? `0${new Date(item.time).getHours()}` : new Date(item.time).getHours()}:${new Date(item.time).getMinutes() < 10 ? `0${new Date(item.time).getMinutes()}` : new Date(item.time).getMinutes()}`}
                                 </Typography>
@@ -102,7 +110,10 @@ export default function SendMessage() {
                             </div>
                             <div style={{ padding: "0.5rem 0rem" }}>
                                 <Button onClick={handleReply}> <Typography variant='subtitle1'>Reply</Typography> </Button>
-                                <IconMenu options={['Delete']} style={{ margin: "0.5rem 0rem" }} />
+                                <IconMenu
+                                    style={{ margin: "0.5rem 0rem" }}
+                                    options={['Delete']}
+                                />
                             </div>
                         </div>
 

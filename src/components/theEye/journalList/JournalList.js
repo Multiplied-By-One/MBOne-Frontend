@@ -13,18 +13,12 @@ const EntryList = (props) => {
   const { state, dispatch } = useContext(myContext);
 
   const eyeAccountListId = state.id;
-  // const params = useMemo(() => ({ eyeAccountListId }), [eyeAccountListId]);
   const [endpoint, fetcher] = getJournalFetcher()
   const { data, error, isValidating } = useSWR([endpoint, eyeAccountListId], fetcher)
 
 
-  //In the event we have an error
   if (error !== undefined) { return (<Box> Error fetching journal list </Box>) }
-
-  // In the event we fetched but no headmates were found
   if (data === []) { return (<Box> No journal found </Box>) }
-
-  // In the event we are initially loading the users headmates
   if (!data && isValidating) { return (<Box> Loading... </Box>) }
 
   return (

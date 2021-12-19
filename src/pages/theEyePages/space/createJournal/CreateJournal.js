@@ -24,15 +24,8 @@ const CreateJournal = (props) => {
     const monthsInEng = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const date = new Date();
 
-    function goJournalList() {
-        return new Promise(function (resolve) {
-            resolve(props.history.push("/theEye/space/profile"))
-        })
-    }
-
-    //when click save button, entity member of journals and entries were created to database and direct user to Journal list page with the updated journal list showed
     const handleSave = async () => {
-        createJournal({
+        await createJournal({
             "eyeAccountListId": state.id,
             "label": label
         }).then(async (value) => {
@@ -43,7 +36,7 @@ const CreateJournal = (props) => {
                 "title": title,
                 "content": ""
             })
-            await goJournalList();
+            props.history.push("/theEye/space/profile")
         })
     }
 

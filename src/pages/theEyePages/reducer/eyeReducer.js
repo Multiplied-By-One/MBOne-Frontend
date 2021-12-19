@@ -12,9 +12,6 @@ export const eyeReducer = (state, action) => {
         case 'getAccounts':
             state.accounts = action.accounts
             return state;
-        case 'getAvailableNames':
-            state.availableNames = action.availableNames
-            return state;
         case 'clickAccount':
             state = { ...state, ...action.data };
             return state;
@@ -39,13 +36,13 @@ export const eyeReducer = (state, action) => {
             state.journal = action.journalData;
             return state;
         case 'clickEntry':
-            state.journal.entry = action.entryData;
+            state.journal.clickedEntry = action.entryData;
             return { ...state };
         case 'updateTitle':
-            state.journal.entry.title = action.title;
+            state.journal.clickedEntry.title = action.title;
             return { ...state };
         case 'updateContent':
-            state.journal.entry.content = action.content;
+            state.journal.clickedEntry.content = action.content;
             return { ...state };
         case 'createJournal':
             state.journal = action.journal;

@@ -36,29 +36,16 @@ export default function CreateEyeAcc(props) {
 
     dispatch({ type: "getHeadmates", headmates: data })
     useEffect(() => {
+        //to get the headmate names that have not create an eye account yet
         async function getExistAccounts() {
             const info = await client.get(`/eyeAccountList`);
             await dispatch({ type: "getAccounts", accounts: info.data });
-            await getState(state).then((v) => {
-                const allNames = v.map((account) => account !== undefined ? account.name : "")
-                const nameAvailable = allNames ? allNames.filter(function (v, i, names) { return names.indexOf(v) === names.lastIndexOf(v) }) : []
-                setNameOptions(nameAvailable)
-            })
+            const allNames = state.accounts.concat(state.headmates).map((account) => account !== undefined ? account.name : "")
+            const nameAvailable = allNames ? allNames.filter(function (v, i, names) { return names.indexOf(v) === names.lastIndexOf(v) }) : []
+            setNameOptions(nameAvailable)
         }
         getExistAccounts();
     }, [state])
-
-    function getState(state) {
-        return new Promise(function (resolve) {
-            resolve(state.accounts.concat(state.headmates))
-        })
-    }
-
-    function goAccountList() {
-        return new Promise(function (resolve) {
-            resolve(props.history.push("/theEye/accounts"))
-        })
-    }
 
     //get the selected headmate info
     const headmate = data === undefined ? '' : data.filter((mate) => mate.name === name)
@@ -77,7 +64,7 @@ export default function CreateEyeAcc(props) {
             "password": password,
             "connectImg": connectImg,
         })
-        await goAccountList()
+        props.history.push("/theEye/accounts")
     }
 
     return (
@@ -99,7 +86,6 @@ export default function CreateEyeAcc(props) {
                                     <SelectInput
                                         defaultValue=""
                                         options={nameOptions ? nameOptions : []}
-                                        // options={typeof (nameOptions) === 'object' ? nameOptions : []}
                                         onChange={(event) => { setName(event.target.value) }}
                                         value={name}
                                     />

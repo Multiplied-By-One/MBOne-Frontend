@@ -74,11 +74,6 @@
       "eyeAccountListId": 12,
       "label": "My First Label",
       "id": 102
-    },
-    {
-      "eyeAccountListId": 11,
-      "label": "Journal 3",
-      "id": 103
     }
   ],
   "entries": [
@@ -88,31 +83,23 @@
       "date": "May 25",
       "year": 2020,
       "title": "Entry Title 1 ",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam."
     },
     {
       "id": 1001,
       "journalId": 100,
       "date": "May 25",
       "year": 2020,
-      "title": "Entry Title 2",
-      "content": "Ullamcorper eget nulla facilisi etiam dignissim diam quis enim."
+      "title": "Entry Title 2 ",
+      "content": "Lorem ipsum dolor sit jkjgjk amet consectetur adipiscing elit. Integer nec odio. Praesenbjkbkjt libero. Sejjkhd cursus ante  diam. "
     },
     {
       "id": 1002,
       "journalId": 101,
       "date": "May 25",
       "year": 2020,
-      "title": "Entry Title 3",
-      "content": "This is my third entry"
-    },
-    {
-      "id": 1003,
-      "journalId": 103,
-      "date": "Dec 15",
-      "year": 2021,
-      "title": "Ny title",
-      "content": "My first entry!!!"
+      "title": "Entry Title 1",
+      "content": "This is my first entry"
     }
   ],
   "eyebox": [
@@ -120,9 +107,9 @@
       "id": 10000,
       "senderId": 12,
       "eyeAccountListId": 11,
-      "subjectLine": "This is subject 1",
+      "subjectLine": "Lorem ipsum",
       "time": 1590251456000,
-      "messageBody": "Hi, this is Banana",
+      "messageBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "readStatu": true
     },
     {
@@ -137,20 +124,11 @@
     {
       "id": 10002,
       "senderId": 11,
-      "eyeAccountListId": 13,
-      "subjectLine": "Say \"Hi\"",
+      "eyeAccountListId": 12,
+      "subjectLine": "Lorem ipsum",
       "time": 1639618238819,
-      "messageBody": "Hello, welcome!!!!",
+      "messageBody": "eirmod abhorreant interesset mel in. Nam option impedit prodesset ut. Mei in duis natum. Altera detracto recusabo qui id, putent consulatu ad per. Ei prodesset deseruisse",
       "readStatu": false
-    },
-    {
-      "id": 10003,
-      "senderId": 13,
-      "eyeAccountListId": 11,
-      "subjectLine": "Hi Hi",
-      "time": 1639619498319,
-      "messageBody": "Thank you !!!",
-      "readStatu": true
     }
   ]
 }

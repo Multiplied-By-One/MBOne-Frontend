@@ -4,6 +4,7 @@ import useSWR from 'swr';
 import { getEyeAccountFetcher } from '../../../api/eyeAccount';
 import { myContext } from "../../../pages/theEyePages/reducer/eyeReducer";
 import MeetingSpaceEntry from '../../entry/MeetingSpaceEntry/MeetingSpaceEntry'
+import client from "../../../api/client";
 
 const EyeAccountList = (props) => {
 
@@ -12,9 +13,12 @@ const EyeAccountList = (props) => {
 
   const { dispatch } = useContext(myContext);
 
-  useEffect(() => { dispatch({ type: "getAccounts", accounts: data })
+  client.get("/headmates").then((v) => dispatch({ type: "getHeadmates", headmates: v.data }));
+
+  useEffect(() => {
+    dispatch({ type: "getAccounts", accounts: data })
   }, [data]);
-  
+
   //In the event we have an error
   if (error !== undefined) {
     return (<Box>
@@ -37,13 +41,6 @@ const EyeAccountList = (props) => {
   }
 
 
-  function goLogin() {
-    return new Promise(function(resolve){
-        resolve(props.history.push("/theEye/login"))
-    })
-}
-  
-
   return <div className="account-list" > {data.map((account) => {
     return (
       <div className="account-item" key={account.id}>
@@ -52,7 +49,7 @@ const EyeAccountList = (props) => {
           text={account.name}
           onClick={async () => {
             await dispatch({ type: "clickAccount", data: account });
-            await goLogin();
+            props.history.push("/theEye/login");
           }}
         />
       </div>

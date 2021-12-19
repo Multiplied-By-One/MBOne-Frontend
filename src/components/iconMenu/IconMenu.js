@@ -43,9 +43,16 @@ export default function IconMenu(props) {
 
   var options = props.options;
   const MenuList = options.map((option) => (
-    <MenuItem style={options.length > 1 ? { border: "1px #222222", borderStyle: "none none solid none" } : null} key={option} onClick={handleClose}>
+    <MenuItem
+      style={options.length > 1 ? { border: "1px #222222", borderStyle: "none none solid none" } : null}
+      key={option}
+      onClick={() => {
+        props.clickedOption(option)
+        setAnchorEl(null)
+      }
+      }>
       {option}
-    </MenuItem>
+    </MenuItem >
   ))
   return (
     <div {...props}>

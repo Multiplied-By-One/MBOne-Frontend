@@ -1,18 +1,23 @@
 
-/* common style */
+#root > div:first-child{
+    height: 100%;
+}
+
 .eye-root{
     background-color: #333333;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
 }
 
 .main-container{
-    margin: 0% 1%;
-    margin-bottom: 1%;
+    margin: 0px 16px 16px 16px;
     border:3px #5f1c17; 
     border-style: none solid solid solid; 
     border-radius: 0px 0px 12px 12px;
-    /* height:100vh; */
+    flex: 1;
 }
+
 
 
 /* common style for forms */
@@ -27,3 +32,4 @@
     text-decoration: none;
     color:inherit;
   }
+

@@ -10,44 +10,26 @@ import IconMenu from '../../../../components/iconMenu/IconMenu';
 import Tooltips from '../../../../components/tooltip/Tooltips';
 import EntryList from '../../../../components/theEye/entryList/EntryList';
 import { myContext } from '../../reducer/eyeReducer';
-import { createEntries } from '../../../../api/entries';
-import './editJournal.css'
+import { updateEntries } from '../../../../api/entries';
+import { useEffect } from 'react';
 
-import { getEntriesFetcher, updateEntries } from '../../../../api/entries';
-import useSWR from 'swr';
-import { Box } from '@material-ui/core';
+import './editJournal.css'
 
 export default function SpaceProfile(props) {
 
     const { state, dispatch } = useContext(myContext);
-    const journalId = state.journal.id;
-    const [endpoint, fetcher] = getEntriesFetcher()
-    const { data, error, isValidating } = useSWR([endpoint, journalId], fetcher)
     const [content, setContent] = useState();
-    const [title, setTitle] = useState();
     const [saved, setSaved] = useState(false);
-    const [data1, setData1] = useState(data)
 
-    if (error !== undefined) return <Box> Error fetching entry list </Box>
-    if (data === []) return <Box> No entry found </Box>
-    if (!data && isValidating) return <Box> Loading... </Box>
+    useEffect(() => {
+        setContent(state.journal.clickedEntry ? state.journal.clickedEntry.content : '')
+    }, state.journal.clickedEntry)
 
-
-
-    const monthsInEng = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const date = new Date();
-
-    if (state.journal.entry === undefined) {
-        dispatch({ type: 'clickEntry', entryData: data[0] });
+    const firstEntry = (data) => {
+        if (state.journal.clickedEntry === undefined) {
+            dispatch({ type: 'clickEntry', entryData: data });
+        }
     }
-
-    function showSaved() {
-        return new Promise(function (resolve) {
-            resolve(2000)
-        })
-    }
-    console.log("state: ", state)
-    console.log("data: ", data)
 
     return (
         <div className="eye-root" >
@@ -56,34 +38,7 @@ export default function SpaceProfile(props) {
                     left={
                         <Fragment>
                             <Tooltips title="Back" icon={<Link to="/theEye/space/profile" className="link"> <ArrowBackIcon /> </Link>} />
-                            <Tooltips title="Add" icon={
-                                <AddIcon
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => {
-                                        data.push({
-                                            "journalId": state.journal.entry.journalId,
-                                            "date": monthsInEng[date.getMonth()] + " " + date.getDate(),
-                                            "year": date.getFullYear(),
-                                            "title": "",
-                                            "content": ""
-                                        })
-                                        createEntries({
-                                            "journalId": state.journal.entry.journalId,
-                                            "date": monthsInEng[date.getMonth()] + " " + date.getDate(),
-                                            "year": date.getFullYear(),
-                                            "title": "",
-                                            "content": ""
-                                        })
-                                        dispatch({
-                                            type: 'clickEntry', entryData: {
-                                                "journalId": state.journal.entry.journalId,
-                                                "date": monthsInEng[date.getMonth()] + " " + date.getDate(),
-                                                "year": date.getFullYear(),
-                                                "title": "",
-                                                "content": ""
-                                            }
-                                        });
-                                    }} />} />
+                            <Tooltips title="Add" icon={<AddIcon style={{ cursor: "pointer" }} />} />
                         </Fragment>
                     }
                     center={state.journal ? state.journal.label : "Journal Label"}
@@ -91,40 +46,33 @@ export default function SpaceProfile(props) {
                 />
             </Typography>
             <div className="big" >
-                {/* <EntryList firstEntry={firstEntry} /> */}
-                <EntryList data={data} />
+                <EntryList firstEntry={firstEntry} />
                 <div className="main-container" style={{ padding: "16px", flex: "3" }}>
                     <Container style={{ height: "calc(100vh - 112px)", display: "flex", flexDirection: "column", alignItems: "stretch", justifyContent: "flex-start" }}>
                         <div className="header" >
                             <TextField fullWidth
-                                // defaultValue={state.journal.entry.title}
-                                value={state.journal.entry ? state.journal.entry.title : ""}
+                                // defaultValue={state.journal.clickedEntry.title}
+                                value={state.journal.clickedEntry ? state.journal.clickedEntry.title : ""}
                                 placeholder="Entry Title / Heading"
                                 style={{ padding: "0% 3% 0% 5%" }}
                                 inputProps={{ style: { fontSize: "1.3rem", textAlign: "center" } }}
                                 onChange={(event) => {
-                                    setTitle(event.target.value)
                                     dispatch({ type: 'updateTitle', title: event.target.value });
-
                                 }}
                             >
                             </TextField>
                             <Button onClick={async () => {
                                 await dispatch({ type: 'updateContent', content: content });
                                 await updateEntries({
-                                    "id": state.journal.entry.id,
-                                    "journalId": state.journal.entry.journalId,
-                                    "date": state.journal.entry.date,
-                                    "year": state.journal.entry.year,
-                                    "title": state.journal.entry.title,
-                                    "content": state.journal.entry.content
+                                    "id": state.journal.clickedEntry.id,
+                                    "journalId": state.journal.clickedEntry.journalId,
+                                    "date": state.journal.clickedEntry.date,
+                                    "year": state.journal.clickedEntry.year,
+                                    "title": state.journal.clickedEntry.title,
+                                    "content": state.journal.clickedEntry.content
                                 })
-                                await showSaved().then((time) => {
-                                    setSaved((prev) => !prev);
-                                    setTimeout(() => {
-                                        setSaved(false)
-                                    }, time)
-                                })
+                                setSaved(true);
+                                setTimeout(() => { setSaved(false) }, 2000)
                             }
                             }> <Typography variant='subtitle1'>save</Typography> </Button>
                             {{ saved } ? (<Zoom in={saved}>
@@ -132,16 +80,22 @@ export default function SpaceProfile(props) {
                                     <span>Save Successfully</span>
                                 </div>
                             </Zoom>) : ''}
-                            <IconMenu options={['Upload File', 'Upload Image', 'Insert Line Separator', 'Insert Timestamp', 'Add Bullet Point', 'Hangouts Call', 'Insert Link', 'Change Entry Date', 'Download Entry', 'Delete Entry']} />
+                            <IconMenu
+                                options={['Upload File', 'Upload Image', 'Insert Line Separator', 'Insert Timestamp', 'Add Bullet Point', 'Hangouts Call', 'Insert Link', 'Change Entry Date', 'Download Entry', 'Delete Entry']}
+                                clickedOption={(option) => {
+                                    console.log("clicked option: ", option)
+                                }}
+                            />
                         </div>
                         <div className="editor"
                             contentEditable="true"
                             suppressContentEditableWarning="true"
                             onInput={(event) => {
                                 setContent(event.target.textContent)
+                                // dispatch({ type: 'updateContent', content: event.target.textContent });
                             }}
                         >
-                            {state.journal.entry ? state.journal.entry.content : ""}
+                            {state.journal.clickedEntry ? state.journal.clickedEntry.content : ""}
                         </div>
                     </Container>
                 </div>
