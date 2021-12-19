@@ -9,7 +9,6 @@ const StyledMenu = withStyles({
   paper: {
     border: '1px solid #222222',
     borderRadius: "10px",
-    width: "15vw",
     color: "black",
     backgroundColor: "#f5f1e7",
   },
@@ -56,9 +55,7 @@ export default function IconMenu(props) {
   ))
   return (
     <div {...props}>
-      {/* <span onMouseOver={handleClick}> */}
       <MoreHorizIcon onMouseOver={handleClick} style={{ verticalAlign: "middle" }} />
-      {/* </span> */}
       <StyledMenu
         anchorEl={anchorEl}
         keepMounted
