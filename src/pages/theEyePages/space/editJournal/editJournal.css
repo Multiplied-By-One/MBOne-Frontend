@@ -1,0 +1,21 @@
+.big{
+    display: flex;
+    padding-left: 16px;
+    margin-bottom: 16px;
+}
+.editor{
+    /* height: 100%; */
+    margin: 0px 20px; 
+    outline:  none;
+    text-align: left;
+    min-height: 10rem;
+}
+
+.header{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border:3px #5f1c17;
+    border-style: none none solid none;
+    margin: 0% 2% 2%;
+}

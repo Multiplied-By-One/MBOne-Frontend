@@ -28,5 +28,107 @@
       "image": "https://media.istockphoto.com/vectors/boy-pointing-up-vector-id544811428?k=6&m=544811428&s=612x612&w=0&h=elOOMwPniPXpuq0eG3KjbNBjH40gTpSOYtBz_lPa_a0=",
       "gender": "male"
     }
+  ],
+  "eyeAccountList": [
+    {
+      "id": 11,
+      "headmateId": 1,
+      "name": "Maggie",
+      "spaceTitle": "Maggie's space",
+      "changeTheme": false,
+      "headingFont": "Walter Turncoat",
+      "headingFontSize": "15",
+      "mainFont": "Economica",
+      "mainFontSize": "13",
+      "createPassword": false,
+      "password": "",
+      "connectImg": true
+    },
+    {
+      "headmateId": 3,
+      "name": "Banana",
+      "spaceTitle": "This Mind Of Mine",
+      "changeTheme": false,
+      "headingFont": "Walter Turncoat",
+      "headingFontSize": "15",
+      "mainFont": "Economica",
+      "mainFontSize": "13",
+      "createPassword": true,
+      "password": "1111",
+      "connectImg": true,
+      "id": 12
+    }
+  ],
+  "journals": [
+    {
+      "id": 100,
+      "eyeAccountListId": 11,
+      "label": "Label 1"
+    },
+    {
+      "eyeAccountListId": 11,
+      "label": "Label 2",
+      "id": 101
+    },
+    {
+      "eyeAccountListId": 12,
+      "label": "My First Label",
+      "id": 102
+    }
+  ],
+  "entries": [
+    {
+      "id": 1000,
+      "journalId": 100,
+      "date": "May 25",
+      "year": 2020,
+      "title": "Entry Title 1 ",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam."
+    },
+    {
+      "id": 1001,
+      "journalId": 100,
+      "date": "May 25",
+      "year": 2020,
+      "title": "Entry Title 2 ",
+      "content": "Lorem ipsum dolor sit jkjgjk amet consectetur adipiscing elit. Integer nec odio. Praesenbjkbkjt libero. Sejjkhd cursus ante  diam. "
+    },
+    {
+      "id": 1002,
+      "journalId": 101,
+      "date": "May 25",
+      "year": 2020,
+      "title": "Entry Title 1",
+      "content": "This is my first entry"
+    }
+  ],
+  "eyebox": [
+    {
+      "id": 10000,
+      "senderId": 12,
+      "eyeAccountListId": 11,
+      "subjectLine": "Lorem ipsum",
+      "time": 1590251456000,
+      "messageBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "readStatu": true
+    },
+    {
+      "id": 10001,
+      "senderId": 12,
+      "eyeAccountListId": 11,
+      "subjectLine": "Lorem ipsum",
+      "time": 1639566313891,
+      "messageBody": "Lorem ipsum dolor sit amet, eirmod abhorreant interesset mel in. Nam option impedit prodesset ut. Mei in duis natum. Altera detracto recusabo qui id, putent consulatu ad per. Ei prodesset deseruisse dissentiet per.",
+      "readStatu": true
+    },
+    {
+      "id": 10002,
+      "senderId": 11,
+      "eyeAccountListId": 12,
+      "subjectLine": "Lorem ipsum",
+      "time": 1639618238819,
+      "messageBody": "eirmod abhorreant interesset mel in. Nam option impedit prodesset ut. Mei in duis natum. Altera detracto recusabo qui id, putent consulatu ad per. Ei prodesset deseruisse",
+      "readStatu": false
+    }
   ]
 }
