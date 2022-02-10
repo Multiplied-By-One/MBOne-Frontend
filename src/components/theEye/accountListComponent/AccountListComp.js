@@ -49,7 +49,7 @@ const EyeAccountList = (props) => {
           text={account.name}
           onClick={async () => {
             await dispatch({ type: "clickAccount", data: account });
-            props.history.push("/theEye/login");
+            props?.history.push("/theEye/login");
           }}
         />
       </div>
