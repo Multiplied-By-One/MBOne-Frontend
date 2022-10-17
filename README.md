@@ -1,3 +1,5 @@
+> ⚠️ This repository is now deprecated. It has been superseded by [MBO App](https://github.com/Multiplied-By-One/MBO-App) ⚠️
+
 # Multiplied by one frontend
 The repo contains the fronted webapp component of Multiplied by One. An app to assist those with Dissociative Identity Disorder.
 
