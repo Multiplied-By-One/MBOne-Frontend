@@ -35,7 +35,8 @@ export async function createEntity(endpoint, payload, cfg = null) {
     // Dispatch mutate so we know to update the associated endpoint SWR cache
     mutate(endpoint, (current) => {
       return [
-        ...current,
+        // ...current,
+        current,
         { id: -1, ...payload }
       ]
     })
@@ -60,7 +61,7 @@ export async function updateEntity(endpoint, payload, cfg = null) {
   let error = null
 
   try {
-    res = await client.put(`${endpoint}/${payload.id}`,)
+    res = await client.put(`${endpoint}/${payload.id}`, payload, cfg)
   } catch (e) {
     error = e
   }
@@ -68,6 +69,7 @@ export async function updateEntity(endpoint, payload, cfg = null) {
   if (!error) {
     // Dispatch and mutate exsisting state with what we posted
     mutate(endpoint, (current) => {
+      current = [payload]
       return current.map(item => item.id === payload.id ? payload : item)
     })
 

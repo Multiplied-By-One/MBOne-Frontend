@@ -1,0 +1,40 @@
+.account-list{
+    display: grid;
+    padding:2rem 0rem;
+    grid-template-columns: repeat(auto-fill, 23rem);
+    place-items: center center;
+    justify-content:space-evenly;
+    grid-row-gap: 3rem;
+    grid-column-gap: 15px;
+}
+
+.account-item{
+    text-align: center;
+    width: 23rem;
+    cursor: pointer;
+}
+
+
+.account-list .account-item *{
+    padding:5%;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width:768px){
+    .account-list{
+        grid-template-columns: repeat(auto-fill, 18rem); 
+    }
+    .account-item{
+        width:18rem;
+    }
+    
+}
+
+@media screen and (max-width:360px){
+    .account-list{
+        grid-template-columns: repeat(auto-fill, 15rem); 
+    }
+    .account-item{
+        width:15rem;
+    }
+}
